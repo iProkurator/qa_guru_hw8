@@ -139,8 +139,8 @@ public class ZipFileParsingTest {
             }
             // Работа с JSON
             if (zipEntryFileName.endsWith(".json")) {
-                Gson gson = new Gson();
                 try (InputStream is = zipFile.getInputStream(zipEntry)) {
+                    Gson gson = new Gson();
                     String json = new String(is.readAllBytes(), StandardCharsets.UTF_8);
                     Person jsonObject = gson.fromJson(json, Person.class);
                     assertThat(jsonObject.name).isEqualTo("Pavel");
